@@ -1,0 +1,20 @@
+{
+  "name": "intern-alert",
+  "version": "1.0.0",
+  "description": "A high-converting, single-page lead generation application built as a proof of concept for an APM assignment. The application uses a completely dark-themed, premium design inspired by Stripe and Notion. Designed specifically to validate an internship-hunt solution.",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "csv-parser": "^3.2.0",
+    "csv-writer": "^1.6.0",
+    "express": "^5.2.1"
+  }
+}

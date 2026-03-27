@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Intern Alert - Lead Tracking (Sheets View)</title>
+  <style>
+    :root {
+      --sheet-blue: #1a73e8;
+      --sheet-border: #e2e3e3;
+      --sheet-bg: #f8f9fa;
+      --sheet-header: #f1f3f4;
+      --font-family: Arial, sans-serif;
+    }
+    body {
+      margin: 0; padding: 0; font-family: var(--font-family); background-color: white; color: #202124;
+    }
+    .toolbar {
+      display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; border-bottom: 1px solid var(--sheet-border);
+    }
+    .toolbar-left {
+      display: flex; align-items: center;
+    }
+    .sheet-icon {
+      width: 40px; height: 40px; background: #0f9d58; border-radius: 4px; display: flex; align-items: center; justify-content: center;
+      color: white; font-weight: bold; margin-right: 12px; font-size: 24px; font-family: 'Times New Roman', serif; line-height: 1;
+    }
+    .doc-info { display: flex; flex-direction: column; gap: 4px; }
+    .doc-title { font-size: 18px; color: #202124; margin: 0; display: flex; align-items: center; gap: 16px; }
+    .doc-badge { background: var(--sheet-blue); color: white; padding: 4px 12px; border-radius: 4px; font-size: 12px; font-weight: bold; text-transform: uppercase; }
+    .menu-bar { font-size: 13px; color: #5f6368; display: flex; gap: 16px; margin-top: 2px; }
+    
+    .toolbar-right { display: flex; align-items: center; gap: 16px; }
+    .download-btn {
+      background-color: var(--sheet-blue); color: white; border: none; padding: 8px 16px; border-radius: 4px;
+      font-size: 14px; font-weight: bold; cursor: pointer; display: flex; align-items: center; gap: 8px; transition: background 0.2s;
+      text-decoration: none;
+    }
+    .download-btn:hover { background-color: #1557b0; }
+    
+    .sheet-container { padding: 0; width: 100%; overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; font-size: 13px; margin-top: -1px; }
+    th, td { border: 1px solid var(--sheet-border); padding: 8px 12px; text-align: left; }
+    th { background-color: var(--sheet-header); font-weight: normal; color: #5f6368; user-select: none; position: relative; }
+    th:first-child { width: 40px; text-align: center; background-color: var(--sheet-bg); }
+    td:first-child { text-align: center; background-color: var(--sheet-bg); color: #5f6368; font-family: monospace; }
+    
+    .empty-state { text-align: center; padding: 40px; color: #5f6368; font-style: italic; }
+    
+    .live-indicator { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: #0f9d58; font-weight: bold; }
+    .dot { width: 8px; height: 8px; background-color: #0f9d58; border-radius: 50%; animation: pulse 2s infinite; }
+    @keyframes pulse { 0% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(1.2); } 100% { opacity: 1; transform: scale(1); } }
+  </style>
+</head>
+<body>
+
+  <div class="toolbar">
+    <div class="toolbar-left">
+      <div class="sheet-icon">田</div>
+      <div class="doc-info">
+        <h1 class="doc-title">Intern Alert Leads Tracking <span class="doc-badge">APM Showcase</span></h1>
+        <div class="menu-bar">
+          <span>File</span><span>Edit</span><span>View</span><span>Insert</span><span>Format</span><span>Data</span><span>Tools</span><span>Extensions</span><span>Help</span>
+        </div>
+      </div>
+    </div>
+    <div class="toolbar-right">
+      <div class="live-indicator"><div class="dot"></div> Auto-sync ON</div>
+      <a href="/api/export" class="download-btn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Download CSV
+      </a>
+    </div>
+  </div>
+
+  <div class="sheet-container">
+    <table id="sheetTable">
+      <thead>
+        <tr>
+          <th></th>
+          <th>A - Timestamp</th>
+          <th>B - Name</th>
+          <th>C - Email Address</th>
+          <th>D - Target Roles</th>
+        </tr>
+      </thead>
+      <tbody id="sheetBody">
+        <!-- Data populated by JS -->
+      </tbody>
+    </table>
+    <div id="loading" style="padding: 20px; color: #5f6368;">🔄 Loading spreadsheet data...</div>
+  </div>
+
+  <script>
+    async function loadData() {
+      try {
+        const response = await fetch('/api/leads');
+        const data = await response.json();
+        
+        document.getElementById('loading').style.display = 'none';
+        const tbody = document.getElementById('sheetBody');
+        tbody.innerHTML = '';
+        
+        if (data.length === 0) {
+          tbody.innerHTML = '<tr><td></td><td colspan="3" class="empty-state">No leads yet. Submit a test form first!</td></tr>';
+          return;
+        }
+
+        data.forEach((row, index) => {
+          const tr = document.createElement('tr');
+          
+          const rowNumber = document.createElement('td');
+          rowNumber.textContent = index + 1;
+          
+          const timestamp = document.createElement('td');
+          // Format the timestamp cleanly
+          timestamp.textContent = row.Timestamp ? new Date(row.Timestamp).toLocaleString() : new Date().toLocaleString();
+          
+          const name = document.createElement('td');
+          name.textContent = row.Name || 'Unknown';
+          
+          const email = document.createElement('td');
+          email.textContent = row.Email || 'No Email';
+          
+          const roles = document.createElement('td');
+          roles.textContent = row['Target Roles'] || 'Any';
+          
+          tr.appendChild(rowNumber);
+          tr.appendChild(timestamp);
+          tr.appendChild(name);
+          tr.appendChild(email);
+          tr.appendChild(roles);
+          tbody.appendChild(tr);
+        });
+        
+        // Add 5 empty rows at bottom matching standard sheets behavior
+        for(let i=1; i<=15; i++) {
+          const tr = document.createElement('tr');
+          tr.innerHTML = `<td>${data.length + i}</td><td></td><td></td><td></td><td></td>`;
+          tbody.appendChild(tr);
+        }
+
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    }
+
+    loadData();
+    setInterval(loadData, 5000); // Polling for live-updates impression
+  </script>
+</body>
+</html>

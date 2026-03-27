@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Intern Alert- Never miss an internship again</title>
+  <meta name="description" content="Get curated internship opportunities delivered directly to your inbox.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  
+  <div class="bg-mesh">
+    <div class="glow-orb orb-1"></div>
+    <div class="glow-orb orb-2"></div>
+    <div class="grid-overlay"></div>
+  </div>
+
+  <nav class="navbar">
+    <div class="container nav-content">
+      <div class="brand">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="brand-icon"><path d="M13 2L3 14H12L11 22L21 10H12L13 2Z" fill="url(#grad)"/><defs><linearGradient id="grad" x1="3" y1="2" x2="21" y2="22" gradientUnits="userSpaceOnUse"><stop stop-color="#3b82f6"/><stop offset="1" stop-color="#8b5cf6"/></linearGradient></defs></svg>
+        Intern<span class="brand-accent">Alert</span>
+      </div>
+      <a href="#join" class="btn-ghost">Join Waitlist</a>
+    </div>
+  </nav>
+
+  <main>
+    <header class="hero">
+      <div class="container hero-container">
+        
+        <div class="live-badge">
+          <div class="pulse-ring"><div class="pulse-dot"></div></div>
+          <span class="badge-text">Already helping <strong>500+</strong> students stay ahead</span>
+        </div>
+        
+        <h1 class="hero-hl">Stop Scrolling.<br>Start <span class="gradient-text">Applying.</span></h1>
+        
+        <p class="hero-subhl">
+          Get curated internship opportunities delivered directly to your inbox. Tailored specifically for students who don’t want to miss out.
+        </p>
+
+        <div class="form-wrapper" id="join">
+          <form id="lead-form" class="capture-form">
+            <div class="input-row">
+              <input type="text" id="name" name="name" placeholder="First Name" required autocomplete="off">
+              <input type="email" id="email" name="email" placeholder="Email" required autocomplete="off">
+              <input type="text" id="domain" name="domain" placeholder="Target Roles (e.g. Product, Data Science)" required autocomplete="off">
+              <button type="submit" id="submit-btn" class="btn-primary">
+                Get Alerts
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+            </div>
+            <div class="form-footer">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              <span>No spam. Leads securely stored for early access.</span>
+            </div>
+          </form>
+          
+          <div id="success-state" class="success-message hidden">
+            <div class="success-icon-wrap">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div>
+              <h3 class="success-hl">You’re on the waitlist!</h3>
+              <p class="success-subhl">We’ll notify you when new internships drop.</p>
+              <div class="encryption-notice">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                Your data is end-to-end encrypted. It will not be used for anything other than this service and without any 3rd party interpretation.
+              </div>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </header>
+
+    <!-- TRUST MARQUEE -->
+    <div class="marquee-section">
+      <p class="marquee-label">TRUSTED BY STUDENTS AT TOP INSTITUTIONS</p>
+      <div class="marquee-container">
+        <div class="marquee-content">
+          <span>IIT Bombay</span>
+          <span class="dot">•</span>
+          <span>BITS Pilani</span>
+          <span class="dot">•</span>
+          <span>NIT Trichy</span>
+          <span class="dot">•</span>
+          <span>Delhi Technological University</span>
+          <span class="dot">•</span>
+          <span>VIT Vellore</span>
+          <span class="dot">•</span>
+          <span>SRM University</span>
+          <span class="dot">•</span>
+          <span>IIT Madras</span>
+        </div>
+        <!-- Duplicate for infinite scroll effect -->
+        <div class="marquee-content" aria-hidden="true">
+          <span>IIT Bombay</span>
+          <span class="dot">•</span>
+          <span>BITS Pilani</span>
+          <span class="dot">•</span>
+          <span>NIT Trichy</span>
+          <span class="dot">•</span>
+          <span>Delhi Technological University</span>
+          <span class="dot">•</span>
+          <span>VIT Vellore</span>
+          <span class="dot">•</span>
+          <span>SRM University</span>
+          <span class="dot">•</span>
+          <span>IIT Madras</span>
+        </div>
+      </div>
+    </div>
+
+    <section class="how-it-works">
+      <div class="container container-sm">
+        <h2 class="section-hl text-center">How it works</h2>
+        <div class="steps-flow">
+          <div class="step-card">
+            <div class="step-num">1</div>
+            <div class="step-text">
+              <h3>Sign up in 10 seconds</h3>
+              <p>Just drop your email. Minimal friction, maximum value.</p>
+            </div>
+          </div>
+          <div class="step-connector"></div>
+          <div class="step-card">
+            <div class="step-num">2</div>
+            <div class="step-text">
+              <h3>We find relevant internships</h3>
+              <p>We actively monitor the noise to find the actual verified openings.</p>
+            </div>
+          </div>
+          <div class="step-connector"></div>
+          <div class="step-card">
+            <div class="step-num">3</div>
+            <div class="step-text">
+              <h3>Get alerts directly in your inbox</h3>
+              <p>Be the first to apply. Speed completely changes your hit rate.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="features">
+      <div class="container">
+        <h2 class="section-hl text-center">Built specifically for internship seekers</h2>
+        <div class="features-grid">
+          <div class="feat-card">
+            <div class="feat-icon i-blue"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+            <h3 class="feat-title">Fast alerts</h3>
+            <p class="feat-desc">Companies close forms when they hit application limits. We make sure you’re always early.</p>
+          </div>
+          <div class="feat-card">
+            <div class="feat-icon i-purple"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+            <h3 class="feat-title">Curated listings</h3>
+            <p class="feat-desc">No random noise, no scams, no ghost jobs. Only rigorously verified opportunities.</p>
+          </div>
+          <div class="feat-card">
+            <div class="feat-icon i-green"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div>
+            <h3 class="feat-title">Simple & free</h3>
+            <p class="feat-desc">No subscriptions. No clutter. Just a pure pipeline of internship links straight to you.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="trust">
+      <div class="container trust-container">
+        <div class="trust-left">
+          <h2 class="trust-hl">Every missed opportunity hurts. <br>We fix that.</h2>
+          <div class="trust-check">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+            <p>You shouldn’t need 10 tabs open to find one internship.</p>
+          </div>
+          <div class="trust-check">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+            <p>Built by students who've been exactly where you are.</p>
+          </div>
+        </div>
+        
+        <div class="trust-right">
+          <div class="review-card">
+            <div class="review-stars">★★★★★</div>
+            <p class="review-text">"Saved me literally hours of searching. When alerts come in, I know it's a real opening and not a generic ghost job. Finally something precise for APM and SDE roles."</p>
+            <div class="review-author">
+              <div class="author-avatar">RK</div>
+              <div class="author-details">
+                <strong>Rahul K.</strong>
+                <span>Final year student</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="final-cta">
+      <div class="container text-center">
+        <h2>Start getting internships before everyone else.</h2>
+        <p>No more scrolling. Just applying.</p>
+        <a href="#join" class="btn-primary btn-large">Join the Waitlist Now</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-content">
+      <div class="brand">Intern<span class="brand-accent">Alert</span></div>
+      <p>Helping students stay ahead in their career journey</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
