@@ -5,6 +5,8 @@ Hey there! Welcome to Intern Alert.
 
 I built this high-converting, single-page web app for an APM assignment. It's a fun proof-of-concept designed to see if students actually want an internship alerting service. I went with a sleek dark theme because, let's be real, we all love that early-stage stealth startup vibe, and it instantly builds trust with developers and students.
 
+![Intern Alert Homepage](./screenshot.png)
+
 ---
 
 ## The "Why" Behind Intern Alert
